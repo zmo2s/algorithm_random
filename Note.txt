@@ -1,0 +1,71 @@
+The function rand in C can give random number the first times the function is use, but not the sacond time.
+if you convert function rand number superior or equal to 2^9 so 16 byte,  to binary number you see the last digit(lowest bit)  binary alternate beteen 0 and 1.
+exemple :
+
+we generate 16 value : 
+
+           a@a:~/Desktop$ ./test
+
+
+Decimal       binary
+    6         110
+    220       11011100
+    188       10111100
+    116       1110100
+    199       11000111
+     21       10101
+     37       100101
+    250       11111010
+    107       1101011 
+     73       1001001
+    194       11000010
+    219       11011011
+    221       11011101
+     65       1000001
+     46       101110
+    249       11111001
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Early computations tended to concern themselves with the bits and bytes and played tricks with the registers to minimize bytes
+of code (before lines there were bytes)
+
+I have only found one reasonable clue below:
+
+The output of this generator isn’t very random. If we use the sample generator listed above, 
+then the sequence of 16 key bytes will be highly non-random. For instance, it turns out 
+that the low bit of each successive output of rand() will alternate (e.g., 0,1,0,1,0,1, . . . ). 
+Do you see why? The low bit of x * 1103515245 is the same as the low bit of x, and then adding 12345 just flips the low bit. 
+Thus the low bit alternates. This narrows down the set of possible keys to only 2113 possibilities;much less than the desired 
+value of 2128.
+
+http://inst.eecs.berkeley.edu/~cs161/fa08/Notes/random.pdf
+
+And two reasonable answers:
+
+Improving a poor random number generator (1976) by Bays, Durham Bays, Carter, S D Durham
+
+http://en.wikipedia.org/wiki/TRNG
