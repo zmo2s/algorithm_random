@@ -1,5 +1,9 @@
 The function rand in C can give random number the first times the function is use, but not the sacond time.
-if you convert function rand number superior or equal to 2^9 so 16 byte,  to binary number you see the last digit(lowest bit)  binary alternate beteen 0 and 1.
+if you convert function rand number superior or equal to 2^9 so 16 byte,  to binary number you see the last digit(lowest bit)  binary will try to alternate beteen 0 and 1.
+
+Because of : x * 1103515245 is the same as the low bit of x, and then adding 1234, just flips the low bit.
+
+
 exemple :
 
 we generate 16 value : 
@@ -23,7 +27,7 @@ Decimal       binary
     221       11011101
      65       1000001
      46       101110
-    249       1111100*1*
+    249       11111001
 
 
 
@@ -47,7 +51,7 @@ Decimal       binary
 
 
 
-
+From a PDF:
 
 
 Early computations tended to concern themselves with the bits and bytes and played tricks with the registers to minimize bytes
